@@ -149,7 +149,7 @@ static int amd_chipset_sb_type_init(struct amd_chipset_info *pinfo)
 							  0x145c, NULL);
 			if (pinfo->smbus_dev) {
 				rev = pinfo->smbus_dev->revision;
-				pinfo->sb_type.gen = AMD_CHIPSET_TAISHAN;
+				pinfo->sb_type.gen = NOT_AMD_CHIPSET;
 			} else {
 				pinfo->sb_type.gen = NOT_AMD_CHIPSET;
 				return 0;
