@@ -1172,9 +1172,9 @@ static int check_version(Elf_Shdr *sechdrs,
 	return 0;
 
 bad_version:
-	printk("%s: disagrees about version of symbol %s\n",
-	       mod->name, symname);
-	return 0;
+	//printk("%s: disagrees about version of symbol %s\n",
+	 //      mod->name, symname);
+	return 1;
 }
 
 static inline int check_modstruct_version(Elf_Shdr *sechdrs,
