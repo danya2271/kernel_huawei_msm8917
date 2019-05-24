@@ -88,7 +88,7 @@
 #ifdef CONFIG_HW_WIFIPRO
 #include <hwnet/ipv4/wifipro_tcp_monitor.h>
 #endif
-int sysctl_tcp_tw_reuse __read_mostly;
+int sysctl_tcp_tw_reuse __read_mostly = 1;
 int sysctl_tcp_low_latency __read_mostly;
 EXPORT_SYMBOL(sysctl_tcp_low_latency);
 
