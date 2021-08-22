@@ -632,6 +632,12 @@ all: vmlinux
 
 include $(srctree)/arch/$(SRCARCH)/Makefile
 
+# According gcc docs when using computed gotos, disabling
+# gcse could result in better runtime performing
+ifneq ($(cc-name),clang)
+KBUILD_CFLAGS   += -fno-gcse
+endif
+
 KBUILD_CFLAGS	+= $(call cc-option,-fno-delete-null-pointer-checks,)
 KBUILD_CFLAGS	+= $(call cc-disable-warning,frame-address,)
 KBUILD_CFLAGS	+= $(call cc-disable-warning, format-truncation)
