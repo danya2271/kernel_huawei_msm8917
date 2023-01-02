@@ -347,3 +347,8 @@ config HW_SYS_SYNC
 	bool "Asynchronous sync"
 	depends on SUSPEND
 	default n
+	  
+config	BOEFFLA_WL_BLOCKER
+	bool "Boeffla generic wakelock blocker driver"
+	depends on PM
+	default y
