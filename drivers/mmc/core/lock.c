@@ -252,7 +252,7 @@ static int mmc_lock_sd_init_card(struct mmc_card *card, bool binit)
 		printk("the highest freq of the sd card has changed, the old clk_scaling_highest is %lu, the new clk_scaling_highest is %lu, re-match the devfreq.\n", clk_scaling_highest_backup, card->clk_scaling_highest);
 		if (host->clk_scaling.enable) {
 			host->clk_scaling.freq_table[0] = 50000000; //the default min value that is defined in the msm8937.dtsi(qcom,devfreq,freq-table)
-			host->clk_scaling.freq_table[1] = 200000000; //the default max value that is defined in the msm8937.dtsi(qcom,devfreq,freq-table)
+			host->clk_scaling.freq_table[1] = 250000000; //the default max value that is defined in the msm8937.dtsi(qcom,devfreq,freq-table)
 			host->clk_scaling.freq_table_sz = 2;
 			err = mmc_exit_clk_scaling(host);
 			if(err) {

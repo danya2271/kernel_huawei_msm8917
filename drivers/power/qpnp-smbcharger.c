@@ -6207,9 +6207,6 @@ skip_for_correct_detect:
     if (chip->ignore_usb_ibus_setting) {
         rc = chip->usb_psy->get_property(chip->usb_psy,
                     POWER_SUPPLY_PROP_TYPE, &prop);
-        if (rc == 0 && current_limit < DEFAULT_SDP_MA &&
-                    prop.intval != POWER_SUPPLY_TYPE_USB_DCP && false == chip->release_wakelock_flag )
-            current_limit = DEFAULT_SDP_MA;
     }
 
     if (current_limit != chip->usb_target_current_ma) {
@@ -6858,9 +6855,6 @@ static irqreturn_t recharge_handler(int irq, void *_chip)
 	struct smbchg_chip *chip = _chip;
 	u8 reg = 0;
 
-	/* Stay awake when recharge start */
-	if (!chip->release_wakelock_flag && is_usb_present(chip))
-		smbchg_stay_awake(chip, PM_CHARGING_CHECK);
 	smbchg_read(chip, &reg, chip->chgr_base + RT_STS, 1);
 	pr_smb(PR_INTERRUPT, "triggered: 0x%02x\n", reg);
 	smbchg_parallel_usb_check_ok(chip);

@@ -361,8 +361,8 @@ CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 CFLAGS_MODULE   =
 AFLAGS_MODULE   =
 LDFLAGS_MODULE  =
-CFLAGS_KERNEL	= -mcpu=cortex-a53+crc+crypto -mtune=cortex-a53 -march=armv8-a+crc+crypto -no-integrated-as
-AFLAGS_KERNEL	= -mcpu=cortex-a53+crc+crypto -mtune=cortex-a53 -march=armv8-a+crc+crypto -no-integrated-as
+CFLAGS_KERNEL	= -mcpu=cortex-a53+crc+crypto -mtune=cortex-a53 -march=armv8-a+crc+crypto
+AFLAGS_KERNEL	= -mcpu=cortex-a53+crc+crypto -mtune=cortex-a53 -march=armv8-a+crc+crypto
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage -fno-tree-loop-im
 CFLAGS_KCOV	= -fsanitize-coverage=trace-pc
 
@@ -849,6 +849,9 @@ KBUILD_CFLAGS   += $(call cc-option,-Werror=strict-prototypes)
 
 # Prohibit date/time macros, which would make the build non-deterministic
 KBUILD_CFLAGS   += $(call cc-option,-Werror=date-time)
+
+# Needed to unbreak GCC 7.x and above
+KBUILD_CFLAGS   += $(call cc-option,-fno-store-merging,)
 
 # use the deterministic mode of AR if available
 KBUILD_ARFLAGS := $(call ar-option,D)
