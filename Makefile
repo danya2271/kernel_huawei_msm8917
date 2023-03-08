@@ -433,7 +433,7 @@ KBUILD_AFLAGS   := -D__ASSEMBLY__
 KBUILD_AFLAGS_MODULE  := -DMODULE
 KBUILD_CFLAGS_MODULE  := -DMODULE
 KBUILD_LDFLAGS_MODULE := -T $(srctree)/scripts/module-common.lds
-LDFLAGS := -O3 -mcpu=cortex-a53+crc -mtune=cortex-a53
+LDFLAGS := -O3
 TARGET_BUILD_VARIANT := user
 
 
