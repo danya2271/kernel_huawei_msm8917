@@ -106,7 +106,7 @@ extern int huawei_pon_regs[MAX_REG_TYPE];
 #include <linux/unmovable_isolate.h>
 #endif
 
-#ifdef CONFIG_SYSCTL
+#if defined(CONFIG_SYSCTL)
 
 /* External variables not in a header file. */
 extern int max_threads;
@@ -3251,4 +3251,3 @@ EXPORT_SYMBOL(proc_dointvec_ms_jiffies);
 EXPORT_SYMBOL(proc_dostring);
 EXPORT_SYMBOL(proc_doulongvec_minmax);
 EXPORT_SYMBOL(proc_doulongvec_ms_jiffies_minmax);
-#endif
