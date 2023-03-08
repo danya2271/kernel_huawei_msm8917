@@ -457,10 +457,7 @@ static ssize_t enable_store(struct kobject *kobj, struct kobj_attribute *attr,
 	ret = kstrtou16(buf, 10, &enable);
 	if (ret)
 		return ret;
-	if (enable)
 		rcc_thread_start(rcc);
-	else
-		rcc_thread_stop(rcc);
 	return len;
 }
 
