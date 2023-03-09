@@ -28,7 +28,7 @@
 		qcom,active-only;
 		qcom,bw-tbl =
 			< 0 >,    /* Off */
-			< 769 >,  /* 1. DDR:100.80 MHz BIMC: 201.60 MHz */
+			< 1077 >,  /* 1. DDR:141.12 MHz BIMC: 282.24 MHz */
 			< 1611 >, /* 2. DDR:211.20 MHz BIMC: 422.40 MHz */
 			< 2270 >, /* 3. DDR:297.60 MHz BIMC: 595.20 MHz */
 			< 2929 >, /* 4. DDR:384.00 MHz BIMC: 768.00 MHz */
