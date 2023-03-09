@@ -1056,14 +1056,14 @@
 		qcom,src-dst-ports = <1 512>;
 		qcom,active-only;
 		qcom,bw-tbl =
-			<   769 /*  100.8 MHz */ >,
+			<   846 /*  110.88 MHz */ >,
 			<  1611 /*  211.2 MHz */ >,
-			<  2270 /*  297.6 MHz */ >,	/*SVS */
+			<  2610 /*  342.24 MHz */ >,	/*SVS */
 			<  2929 /*  384   MHz */ >,
 			<  4248 /*  556.8 MHz */ >,	/*SVS+*/
 			<  4541 /*  595.2 MHz */ >,	/*NOM*/
 			<  5126 /*  672   MHz */ >,	/*NOM+*/
-			<  5645 /*  740   MHz */ >;	/*TURBO*/
+			<  6491 /*  851   MHz */ >;	/*TURBO*/
 	};
 
 	mincpubw: qcom,mincpubw {
@@ -1072,14 +1072,14 @@
 		qcom,src-dst-ports = <1 512>;
 		qcom,active-only;
 		qcom,bw-tbl =
-			<   769 /*  100.8 MHz */ >,
+			<   846 /*  110.88 MHz */ >,
 			<  1611 /*  211.2 MHz */ >,
-			<  2270 /*  297.6 MHz */ >,
+			<  2610 /*  342.24 MHz */ >,	
 			<  2929 /*  384   MHz */ >,
 			<  4248 /*  556.8 MHz */ >,
 			<  4541 /*  595.2 MHz */ >,
 			<  5126 /*  672   MHz */ >,
-			<  5645 /*  740   MHz */ >;
+			<  6491 /*  851   MHz */ >;
 	};
 
 	qcom,cpu-bwmon {
