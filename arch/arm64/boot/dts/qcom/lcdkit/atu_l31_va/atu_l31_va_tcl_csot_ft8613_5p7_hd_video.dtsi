@@ -252,7 +252,7 @@
 		hw,lcdkit-h-right-border = <0>;
 		hw,lcdkit-v-top-border = <0>;
 		hw,lcdkit-v-bottom-border = <0>;
-		hw,lcdkit-panel-framerate = <60>;
+		hw,lcdkit-panel-framerate = <90>;
 		hw,lcdkit-panel-clockrate = <667000000>;
 		hw,lcdkit-panel-timings = [B4 2A 1C 00 54 58 20 2E 20 03 04 00];
 		hw,lcdkit-t-clk-pre = <0x23>;
