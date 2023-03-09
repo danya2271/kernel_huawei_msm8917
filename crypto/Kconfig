@@ -218,6 +218,7 @@ config CRYPTO_GCM
 	  Authentication Code (GMAC). Required for IPSec.
 
 config CRYPTO_CHACHA20POLY1305
+	default y
 	tristate "ChaCha20-Poly1305 AEAD support"
 	select CRYPTO_CHACHA20
 	select CRYPTO_POLY1305
