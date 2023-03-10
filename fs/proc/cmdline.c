@@ -44,10 +44,12 @@ static void remove_safetynet_flags(char *cmd)
 	remove_flag(cmd, "androidboot.secboot=");
 	remove_flag(cmd, "androidboot.verifiedbootstate=");
 	remove_flag(cmd, "androidboot.veritymode=");
+	remove_flag(cmd, "androidboot.oemmode=");
 }
 
 static int __init proc_cmdline_init(void)
 {
+	char *offset_addr;
 	strcpy(new_command_line, saved_command_line);
 
 	/*
@@ -55,6 +57,7 @@ static int __init proc_cmdline_init(void)
 	 * pass SafetyNet CTS check.
 	 */
 	remove_safetynet_flags(new_command_line);
+	strcat(new_command_line, "androidboot.oemmode=user ");
 
 	proc_create("cmdline", 0, NULL, &cmdline_proc_fops);
 	return 0;
