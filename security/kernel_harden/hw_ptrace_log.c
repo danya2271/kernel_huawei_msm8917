@@ -28,9 +28,10 @@
 #define PTRACE_POKE_STATE_IMONITOR_ID     (940000005)
 static int ptrace_do_upload_log(long type, const char * child_cmdline, const char * tracer_cmdline)
 {
-	return 0;
+	int ret = 0;
+	ret = imonitor_send_event(obj);
+	return ret;
 }
 int record_ptrace_info_before_return_EIO(long request, struct task_struct *child)
 {
-	return 0;
 }
