@@ -1063,7 +1063,7 @@
 			<  4248 /*  556.8 MHz */ >,	/*SVS+*/
 			<  4541 /*  595.2 MHz */ >,	/*NOM*/
 			<  5126 /*  672   MHz */ >,	/*NOM+*/
-			<  7862 /*  1030   MHz */ >;	/*TURBO*/
+			<  9434 /*  1236   MHz */ >;	/*TURBO*/
 	};
 
 	mincpubw: qcom,mincpubw {
@@ -1079,7 +1079,7 @@
 			<  4248 /*  556.8 MHz */ >,
 			<  4541 /*  595.2 MHz */ >,
 			<  5126 /*  672   MHz */ >,
-			<  7862 /*  1030   MHz */ >;
+			<  9434 /*  1236   MHz */ >;
 	};
 
 	qcom,cpu-bwmon {
@@ -1097,7 +1097,7 @@
 		cpu-to-dev-map =
 			<  998400  4541 >,
 			< 1094400  5126 >,
-			< 1497600  7862 >;
+			< 1497600  9434 >;
 		};
 
 		mincpubw-cpufreq {
@@ -2040,7 +2040,7 @@
 			/* TURBO */
 			qcom,gpu-pwrlevel@0 {
 				reg = <0>;
-				qcom,gpu-freq = <798000000>;
+				qcom,gpu-freq = <850000000>;
 				qcom,bus-freq = <7>;
 				qcom,bus-min = <7>;
 				qcom,bus-max = <7>;
