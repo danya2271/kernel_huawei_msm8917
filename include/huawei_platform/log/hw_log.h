@@ -74,7 +74,7 @@ struct huawei_log_tag {
 #define __hwlog_info(TAG,fmt, ...) \
     do{ \
         if(TAG_STRUCT_NAME(TAG).level & HWLOG_INFO) \
-            pr_info(hw_fmt_tag(TAG,I) fmt,##__VA_ARGS__);    \
+            pr_no_info(hw_fmt_tag(TAG,I) fmt,##__VA_ARGS__);    \
     }while(0)
 
 #define hwlog_debug(x...) \
@@ -86,7 +86,7 @@ struct huawei_log_tag {
 #define __hwlog_debug(TAG,fmt, ...) \
     do{ \
         if(TAG_STRUCT_NAME(TAG).level & HWLOG_DEBUG) \
-            pr_err(hw_fmt_tag(TAG,D) fmt,##__VA_ARGS__);    \
+            pr_no_info(hw_fmt_tag(TAG,D) fmt,##__VA_ARGS__);    \
     }while(0)
 
 #define hwlog_debug1(x...) \
