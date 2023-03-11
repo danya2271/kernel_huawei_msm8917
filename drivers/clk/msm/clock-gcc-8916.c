@@ -490,7 +490,7 @@ static struct clk_freq_tbl ftbl_apss_ahb_clk[] = {
 	F(  19200000,	    xo_a,   1,	  0,	0),
 	F(  50000000,	   gpll0,  16,	  0,	0),
 	F(  100000000,	   gpll0,   8,	  0,	0),
-	F(  133330000,	   gpll0,   6,	  0,	0),
+	F(  160000000,	   gpll0,   6,	  0,	0),
 	F_END
 };
 
@@ -1206,7 +1206,7 @@ static struct rcg_clk sdcc1_apps_clk_src = {
 	.c = {
 		.dbg_name = "sdcc1_apps_clk_src",
 		.ops = &clk_ops_rcg_mnd,
-		VDD_DIG_FMAX_MAP2(LOW, 50000000, NOMINAL, 200000000),
+		VDD_DIG_FMAX_MAP2(LOW, 50000000, NOMINAL, 250000000),
 		CLK_INIT(sdcc1_apps_clk_src.c),
 	},
 };
@@ -1218,7 +1218,7 @@ static struct clk_freq_tbl ftbl_gcc_sdcc2_apps_clk[] = {
 	F(  25000000,	   gpll0,  16,	  1,	2),
 	F(  50000000,	   gpll0,  16,	  0,	0),
 	F( 100000000,	   gpll0,   8,	  0,	0),
-	F( 200000000,	   gpll0,   4,	  0,	0),
+	F( 250000000,	   gpll0,   4,	  0,	0),
 	F_END
 };
 
@@ -1231,7 +1231,7 @@ static struct rcg_clk sdcc2_apps_clk_src = {
 	.c = {
 		.dbg_name = "sdcc2_apps_clk_src",
 		.ops = &clk_ops_rcg_mnd,
-		VDD_DIG_FMAX_MAP2(LOW, 50000000, NOMINAL, 200000000),
+		VDD_DIG_FMAX_MAP2(LOW, 50000000, NOMINAL, 250000000),
 		CLK_INIT(sdcc2_apps_clk_src.c),
 	},
 };
