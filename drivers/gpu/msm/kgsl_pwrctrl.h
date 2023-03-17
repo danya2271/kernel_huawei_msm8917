@@ -115,6 +115,7 @@ struct kgsl_regulator {
  * @active_pwrlevel - The currently active power level
  * @previous_pwrlevel - The power level before transition
  * @thermal_pwrlevel - maximum powerlevel constraint from thermal
+ * @default_pwrlevel - device wake up power level
  * @restrict_pwrlevel - maximum power level jump to restrict
  * @max_pwrlevel - maximum allowable powerlevel per the user
  * @min_pwrlevel - minimum allowable powerlevel per the user
@@ -169,6 +170,7 @@ struct kgsl_pwrctrl {
 	unsigned int active_pwrlevel;
 	unsigned int previous_pwrlevel;
 	unsigned int thermal_pwrlevel;
+	unsigned int default_pwrlevel;
 	unsigned int restrict_pwrlevel;
 	unsigned int wakeup_maxpwrlevel;
 	unsigned int max_pwrlevel;
