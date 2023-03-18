@@ -379,8 +379,8 @@ CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 CFLAGS_MODULE   =
 AFLAGS_MODULE   =
 LDFLAGS_MODULE  =
-CFLAGS_KERNEL	= -mcpu=cortex-a53+crc -mtune=cortex-a53
-AFLAGS_KERNEL	= -mcpu=cortex-a53+crc -mtune=cortex-a53
+CFLAGS_KERNEL	= -mcpu=cortex-a53+crc+crypto -mtune=cortex-a53 -march=armv8-a+crc+crypto
+AFLAGS_KERNEL	= -mcpu=cortex-a53+crc+crypto -mtune=cortex-a53 -march=armv8-a+crc+crypto
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage -fno-tree-loop-im
 CFLAGS_KCOV	= -fsanitize-coverage=trace-pc
 
