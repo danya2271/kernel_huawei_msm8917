@@ -16,8 +16,8 @@
 		status = "okay";
 		pm8917_s1: regulator-s1 {
 			regulator-name = "pm8917_s1";
-			regulator-min-microvolt = <1000000>;
-			regulator-max-microvolt = <1200000>;
+			regulator-min-microvolt = <900000>;
+			regulator-max-microvolt = <1150000>;
 			qcom,init-voltage = <1000000>;
 			status = "okay";
 		};
@@ -170,7 +170,7 @@
 		pm8917_l8: regulator-l8 {
 			regulator-name = "pm8917_l8";
 			regulator-min-microvolt = <2700000>;
-			regulator-max-microvolt = <2950000>;
+			regulator-max-microvolt = <2900000>;
 			qcom,init-voltage = <2950000>;
 			status = "okay";
 		};
@@ -279,8 +279,8 @@
 		status = "okay";
 		pm8917_l19: regulator-l19 {
 			regulator-name = "pm8917_l19";
-			regulator-min-microvolt = <1225000>;
-			regulator-max-microvolt = <1300000>;
+			regulator-min-microvolt = <1200000>;
+			regulator-max-microvolt = <1275000>;
 			qcom,init-voltage = <1225000>;
 			status = "okay";
 		};
@@ -318,7 +318,7 @@
 			reg = <0x2000 0x100>;
 			regulator-name = "pm8917_s5";
 			regulator-min-microvolt = <1050000>;
-			regulator-max-microvolt = <1300000>;
+			regulator-max-microvolt = <1250000>;
 		};
 	};
 };
@@ -517,8 +517,8 @@
 		regulator-max-microvolt = <7>;
 
 		qcom,cpr-fuse-corners = <3>;
-		qcom,cpr-voltage-ceiling = <1155000 1225000 1310000>;
-		qcom,cpr-voltage-floor =   <1050000 1050000 1090000>;
+		qcom,cpr-voltage-ceiling = <1100000 1200000 1300000>;
+		qcom,cpr-voltage-floor =   <1050000 1050000 1070000>;
 		vdd-apc-supply = <&pm8917_s5>;
 
 		mem-acc-supply = <&mem_acc_vreg_corner>;
