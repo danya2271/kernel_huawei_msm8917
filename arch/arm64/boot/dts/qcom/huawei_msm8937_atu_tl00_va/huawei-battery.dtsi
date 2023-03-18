@@ -265,7 +265,7 @@
         huawei,bms-psy-name = "bms";
         huawei,bk_battery-psy-name = "bk_battery";
         huawei,usb-psy-name = "usb";
-        huawei,fastchg-max-current = <1500>;
+        huawei,fastchg-max-current = <1800>;
         huawei,fastchg-max-voltage = <4400>;
         huawei,fastchg-warm-current = <1015>;
         huawei,fastchg-warm-voltage = <4100>;
