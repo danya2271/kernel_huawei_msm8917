@@ -170,7 +170,7 @@
 		pm8917_l8: regulator-l8 {
 			regulator-name = "pm8917_l8";
 			regulator-min-microvolt = <2700000>;
-			regulator-max-microvolt = <2950000>;
+			regulator-max-microvolt = <2900000>;
 			qcom,init-voltage = <2950000>;
 			status = "okay";
 		};
@@ -317,7 +317,7 @@
 			compatible = "qcom,spm-regulator";
 			reg = <0x2000 0x100>;
 			regulator-name = "pm8917_s5";
-			regulator-min-microvolt = <1050000>;
+			regulator-min-microvolt = <1000000>;
 			regulator-max-microvolt = <1250000>;
 		};
 	};
