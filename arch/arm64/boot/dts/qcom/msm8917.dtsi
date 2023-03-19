@@ -1156,22 +1156,12 @@
 		};
 	};
 
-	qcom,msm-rtb {
-		compatible = "qcom,msm-rtb";
-		qcom,rtb-size = <0x100000>; /* 1M EBI1 buffer */
-	};
-
 	qcom,msm-imem@8600000 {
 		compatible = "qcom,msm-imem";
 		reg = <0x08600000 0x1000>; /* Address and size of IMEM */
 		ranges = <0x0 0x08600000 0x1000>;
 		#address-cells = <1>;
 		#size-cells = <1>;
-
-		mem_dump_table@10 {
-			compatible = "qcom,msm-imem-mem_dump_table";
-			reg = <0x10 8>;
-		};
 
 		dload_type@18 {
 			compatible = "qcom,msm-imem-dload-type";
@@ -2051,9 +2041,9 @@
 			qcom,gpu-pwrlevel@0 {
 				reg = <0>;
 				qcom,gpu-freq = <850000000>;
-				qcom,bus-freq = <7>;
-				qcom,bus-min = <7>;
-				qcom,bus-max = <7>;
+				qcom,bus-freq = <8>;
+				qcom,bus-min = <8>;
+				qcom,bus-max = <8>;
 			};
 
 			/* NOM+ */
