@@ -408,13 +408,13 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -std=gnu89 \
 		   -w
 
-KBUILD_AFLAGS_KERNEL :=
+KBUILD_AFLAGS_KERNEL := -Os -mcpu=cortex-a53+crc -mtune=cortex-a53
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
 KBUILD_AFLAGS_MODULE  := -DMODULE
 KBUILD_CFLAGS_MODULE  := -DMODULE
 KBUILD_LDFLAGS_MODULE := -T $(srctree)/scripts/module-common.lds
-LDFLAGS := -O3
+LDFLAGS := -Os -mcpu=cortex-a53+crc -mtune=cortex-a53
 TARGET_BUILD_VARIANT := user
 
 
