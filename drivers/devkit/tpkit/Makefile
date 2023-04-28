@@ -3,7 +3,7 @@
 
 # Each configuration option enables a list of files.
 
-
+KBUILD_CFLAGS += -Wno-incompatible-function-pointer-types -Wno-int-conversion
 KBUILD_CFLAGS += -Wno-return-type
 ifeq ($(CONFIG_HUAWEI_DEVKIT_HISI),y)
 obj-$(CONFIG_HUAWEI_TS_KIT) += tpkits.o

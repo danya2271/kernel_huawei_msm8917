@@ -703,7 +703,7 @@ config PROCESS_RECLAIM
 	 (echo addr size-byte > /proc/PID/reclaim) reclaims pages in
 	 (addr, addr + size-bytes) of the process.
 
-	 Any other vaule is ignored.
+	 Any other value is ignored.
 
 config HUAWEI_SWAP_ZDATA
 	bool "Compressed data to swap"

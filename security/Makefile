@@ -1,7 +1,6 @@
 #
 # Makefile for the kernel security code
 #
-
 obj-$(CONFIG_KEYS)			+= keys/
 subdir-$(CONFIG_SECURITY_SELINUX)	+= selinux
 subdir-$(CONFIG_SECURITY_SMACK)		+= smack

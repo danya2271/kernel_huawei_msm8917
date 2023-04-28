@@ -1,5 +1,5 @@
 # Makefile for the BFMR moduls.
-
+KBUILD_CFLAGS += -Wno-incompatible-function-pointer-types -Wno-int-conversion
 obj-$(CONFIG_HUAWEI_BFM)  += main/
 obj-$(CONFIG_HUAWEI_BFM)  += common/
 

@@ -155,7 +155,7 @@ config ONESHOT_SYNC_USER
 config HUAWEI_RCC
 	tristate "RAM Compress and Clean"
 	depends on SYSFS && SWAP
-	default n
+	default y
 	help
 	  Creates background thread for compress and clean used RAM
 	  dynamiclly.
