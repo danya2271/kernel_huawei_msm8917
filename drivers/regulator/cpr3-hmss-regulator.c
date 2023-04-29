@@ -1300,8 +1300,8 @@ static int cpr3_hmss_kvreg_init(struct cpr3_regulator *vreg)
 		max(msm8996_vdd_apcc_fuse_ret_volt[fuse->vdd_apcc_ret_fuse],
 		    msm8996_vdd_mx_fuse_ret_volt[fuse->vdd_mx_ret_fuse]);
 
-	rc = regulator_set_voltage(vreg->ldo_ret_regulator, vreg->ldo_ret_volt,
-				   INT_MAX);
+	rc = regulator_set_voltage(vreg->ldo_ret_regulator, vreg->ldo_ret_volt * 19 / 20,
+				   INT_MAX * 19 / 20);
 	if (rc < 0) {
 		cpr3_err(vreg, "regulator_set_voltage(ldo_ret) == %d failed, rc=%d\n",
 			 vreg->ldo_ret_volt, rc);

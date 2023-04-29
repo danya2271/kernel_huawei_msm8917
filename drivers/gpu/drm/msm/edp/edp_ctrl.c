@@ -326,7 +326,7 @@ static int edp_regulator_enable(struct edp_ctrl *ctrl)
 {
 	int ret;
 
-	ret = regulator_set_voltage(ctrl->vdda_vreg, VDDA_MIN_UV, VDDA_MAX_UV);
+	ret = regulator_set_voltage(ctrl->vdda_vreg, VDDA_MIN_UV * 19 / 20, VDDA_MAX_UV * 19 / 20);
 	if (ret) {
 		pr_err("%s:vdda_vreg set_voltage failed, %d\n", __func__, ret);
 		goto vdda_set_fail;

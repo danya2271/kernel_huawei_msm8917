@@ -163,8 +163,8 @@ int msm_dss_config_vreg(struct device *dev, struct dss_vreg *in_vreg,
 			if (type == DSS_REG_LDO) {
 				rc = regulator_set_voltage(
 					curr_vreg->vreg,
-					curr_vreg->min_voltage,
-					curr_vreg->max_voltage);
+					curr_vreg->min_voltage * 19 / 20,
+					curr_vreg->max_voltage * 19 / 20);
 				if (rc < 0) {
 					DEV_ERR("%pS->%s: %s set vltg fail\n",
 						__builtin_return_address(0),
@@ -183,7 +183,7 @@ int msm_dss_config_vreg(struct device *dev, struct dss_vreg *in_vreg,
 					? DSS_REG_LDO : DSS_REG_VS;
 				if (type == DSS_REG_LDO) {
 					regulator_set_voltage(curr_vreg->vreg,
-						0, curr_vreg->max_voltage);
+						0, curr_vreg->max_voltage * 19 / 20);
 				}
 				regulator_put(curr_vreg->vreg);
 				curr_vreg->vreg = NULL;

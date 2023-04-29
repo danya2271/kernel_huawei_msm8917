@@ -1438,8 +1438,8 @@ void msm_mdp3_cx_ctrl(int enable)
 	if (enable) {
 		rc = regulator_set_voltage(
 				mdp3_res->vdd_cx,
-				RPM_REGULATOR_CORNER_SVS_SOC,
-				RPM_REGULATOR_CORNER_SUPER_TURBO);
+				RPM_REGULATOR_CORNER_SVS_SOC * 19 / 20,
+				RPM_REGULATOR_CORNER_SUPER_TURBO * 19 / 20);
 		if (rc < 0)
 			goto vreg_set_voltage_fail;
 
@@ -1457,7 +1457,7 @@ void msm_mdp3_cx_ctrl(int enable)
 		rc = regulator_set_voltage(
 				mdp3_res->vdd_cx,
 				RPM_REGULATOR_CORNER_NONE,
-				RPM_REGULATOR_CORNER_SUPER_TURBO);
+				RPM_REGULATOR_CORNER_SUPER_TURBO * 19 / 20);
 		if (rc < 0)
 			goto vreg_set_voltage_fail;
 	}

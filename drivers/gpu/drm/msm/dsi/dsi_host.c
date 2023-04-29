@@ -280,7 +280,7 @@ static int dsi_regulator_init(struct msm_dsi_host *msm_host)
 	for (i = 0; i < num; i++) {
 		if (regulator_can_change_voltage(s[i].consumer)) {
 			ret = regulator_set_voltage(s[i].consumer,
-				regs[i].min_voltage, regs[i].max_voltage);
+				regs[i].min_voltage * 19 / 20, regs[i].max_voltage * 19 / 20);
 			if (ret < 0) {
 				pr_err("regulator %d set voltage failed, %d\n",
 					i, ret);

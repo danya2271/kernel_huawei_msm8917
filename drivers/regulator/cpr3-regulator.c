@@ -1800,8 +1800,8 @@ static int cpr3_regulator_config_ldo_mem_acc(struct cpr3_regulator *vreg,
 					    vreg->ldo_max_headroom_volt,
 					    mem_acc_volt), vreg->ldo_max_volt);
 
-		rc = regulator_set_voltage(ldo_reg, safe_volt,
-					   max(new_volt, last_volt));
+		rc = regulator_set_voltage(ldo_reg, safe_volt * 19 / 20,
+					   max(new_volt, last_volt) * 19 / 20);
 		if (rc) {
 			cpr3_err(ctrl, "regulator_set_voltage(ldo) == %d failed, rc=%d\n",
 				 mem_acc_volt, rc);
@@ -1812,8 +1812,8 @@ static int cpr3_regulator_config_ldo_mem_acc(struct cpr3_regulator *vreg,
 			ctrl->mem_acc_corner_map[CPR3_MEM_ACC_LOW_CORNER] :
 			ctrl->mem_acc_corner_map[CPR3_MEM_ACC_HIGH_CORNER];
 
-		rc = regulator_set_voltage(mem_acc_reg, mem_acc_corn,
-					   mem_acc_corn);
+		rc = regulator_set_voltage(mem_acc_reg, mem_acc_corn * 19 / 20,
+					   mem_acc_corn * 19 / 20);
 		if (rc) {
 			cpr3_err(ctrl, "regulator_set_voltage(mem_acc) == %d failed, rc=%d\n",
 				 0, rc);
@@ -1855,8 +1855,8 @@ static int cpr3_regulator_set_bhs_mode(struct cpr3_regulator *vreg,
 		return rc;
 	}
 
-	rc = regulator_set_voltage(ldo_reg, bhs_volt, min(vdd_ceiling_volt,
-							  vreg->ldo_max_volt));
+	rc = regulator_set_voltage(ldo_reg, bhs_volt * 19 / 20, min(vdd_ceiling_volt,
+							  vreg->ldo_max_volt) * 19 / 20);
 	if (rc) {
 		cpr3_err(vreg, "regulator_set_voltage(ldo) == %d failed, rc=%d\n",
 			 bhs_volt, rc);
@@ -1963,7 +1963,7 @@ static int cpr3_regulator_ldo_apm_prepare(struct cpr3_controller *ctrl,
 				       vreg->ldo_max_volt);
 
 			rc = regulator_set_voltage(vreg->ldo_regulator,
-						   safe_volt, max_volt);
+						   safe_volt * 19 / 20, max_volt * 19 / 20);
 			if (rc) {
 				cpr3_err(vreg, "regulator_set_voltage(ldo) == %d failed, rc=%d\n",
 					 safe_volt, rc);
@@ -2061,8 +2061,8 @@ static int cpr3_regulator_config_vreg_ldo(struct cpr3_regulator *vreg,
 				return rc;
 			}
 
-			rc = regulator_set_voltage(ldo_reg, safe_volt,
-						   max_volt);
+			rc = regulator_set_voltage(ldo_reg, safe_volt * 19 / 20,
+						   max_volt * 19 / 20);
 			if (rc) {
 				cpr3_err(vreg, "regulator_set_voltage(ldo) == %d failed, rc=%d\n",
 					 safe_volt, rc);
@@ -2093,7 +2093,7 @@ static int cpr3_regulator_config_vreg_ldo(struct cpr3_regulator *vreg,
 			return rc;
 		}
 
-		rc = regulator_set_voltage(ldo_reg, final_ldo_volt, max_volt);
+		rc = regulator_set_voltage(ldo_reg, final_ldo_volt * 19 / 20, max_volt * 19 / 20);
 		if (rc) {
 			cpr3_err(vreg, "regulator_set_voltage(ldo) == %d failed, rc=%d\n",
 				 final_ldo_volt, rc);
@@ -2251,7 +2251,7 @@ static int cpr3_regulator_config_bhs_mem_acc(struct cpr3_controller *ctrl,
 
 		if (ctrl->mem_acc_regulator) {
 			rc = regulator_set_voltage(ctrl->mem_acc_regulator,
-						   mem_acc_corn, mem_acc_corn);
+						   mem_acc_corn * 19 / 20, mem_acc_corn * 19 / 20);
 			if (rc) {
 				cpr3_err(ctrl, "regulator_set_voltage(mem_acc) == %d failed, rc=%d\n",
 					 mem_acc_corn, rc);
@@ -2270,8 +2270,8 @@ static int cpr3_regulator_config_bhs_mem_acc(struct cpr3_controller *ctrl,
 					continue;
 
 				rc = regulator_set_voltage(
-					vreg->mem_acc_regulator, mem_acc_corn,
-					mem_acc_corn);
+					vreg->mem_acc_regulator, mem_acc_corn * 19 / 20,
+					mem_acc_corn * 19 / 20);
 				if (rc) {
 					cpr3_err(vreg, "regulator_set_voltage(mem_acc) == %d failed, rc=%d\n",
 						 mem_acc_corn, rc);
@@ -2313,7 +2313,7 @@ static int cpr3_regulator_switch_apm_mode(struct cpr3_controller *ctrl,
 	int orig_last_volt = *last_volt;
 	int rc;
 
-	rc = regulator_set_voltage(vdd, apm_volt, apm_volt);
+	rc = regulator_set_voltage(vdd, apm_volt * 19 / 20, apm_volt * 19 / 20);
 	if (rc) {
 		cpr3_err(ctrl, "regulator_set_voltage(vdd) == %d failed, rc=%d\n",
 			 apm_volt, rc);
@@ -2335,7 +2335,7 @@ static int cpr3_regulator_switch_apm_mode(struct cpr3_controller *ctrl,
 	if (rc) {
 		cpr3_err(ctrl, "APM switch failed, rc=%d\n", rc);
 		/* Roll back the voltage. */
-		regulator_set_voltage(vdd, orig_last_volt, INT_MAX);
+		regulator_set_voltage(vdd, orig_last_volt * 19 / 20, INT_MAX * 19 / 20);
 		*last_volt = orig_last_volt;
 		return rc;
 	}
@@ -2456,8 +2456,8 @@ static int cpr3_regulator_config_mem_acc(struct cpr3_controller *ctrl,
 
 	if (ctrl->mem_acc_regulator && aggr_corner->mem_acc_volt) {
 		rc = regulator_set_voltage(ctrl->mem_acc_regulator,
-					   aggr_corner->mem_acc_volt,
-					   aggr_corner->mem_acc_volt);
+					   aggr_corner->mem_acc_volt * 19 / 20,
+					   aggr_corner->mem_acc_volt * 19 / 20);
 		if (rc) {
 			cpr3_err(ctrl, "regulator_set_voltage(mem_acc) == %d failed, rc=%d\n",
 				 aggr_corner->mem_acc_volt, rc);
@@ -2514,7 +2514,7 @@ static int cpr3_regulator_scale_vdd_voltage(struct cpr3_controller *ctrl,
 		/* Increasing VDD voltage */
 		if (ctrl->system_regulator) {
 			rc = regulator_set_voltage(ctrl->system_regulator,
-				aggr_corner->system_volt, INT_MAX);
+				aggr_corner->system_volt * 19 / 20, INT_MAX * 19 / 20);
 			if (rc) {
 				cpr3_err(ctrl, "regulator_set_voltage(system) == %d failed, rc=%d\n",
 					aggr_corner->system_volt, rc);
@@ -2537,8 +2537,8 @@ static int cpr3_regulator_scale_vdd_voltage(struct cpr3_controller *ctrl,
 	 * duplicate.  This is needed in order to switch from hardware
 	 * closed-loop to open-loop successfully.
 	 */
-	rc = regulator_set_voltage(vdd, new_volt - (ctrl->cpr_enabled ? 0 : 1),
-				   aggr_corner->ceiling_volt);
+	rc = regulator_set_voltage(vdd, (new_volt - (ctrl->cpr_enabled ? 0 : 1)) * 19 / 20,
+				   aggr_corner->ceiling_volt * 19 / 20);
 	if (rc) {
 		cpr3_err(ctrl, "regulator_set_voltage(vdd) == %d failed, rc=%d\n",
 			new_volt, rc);
@@ -2579,7 +2579,7 @@ static int cpr3_regulator_scale_vdd_voltage(struct cpr3_controller *ctrl,
 		/* Decreasing VDD voltage */
 		if (ctrl->system_regulator) {
 			rc = regulator_set_voltage(ctrl->system_regulator,
-				aggr_corner->system_volt, INT_MAX);
+				aggr_corner->system_volt * 19 / 20, INT_MAX * 19 / 20);
 			if (rc) {
 				cpr3_err(ctrl, "regulator_set_voltage(system) == %d failed, rc=%d\n",
 					aggr_corner->system_volt, rc);
@@ -3168,8 +3168,8 @@ static int _cpr3_regulator_update_ctrl_state(struct cpr3_controller *ctrl)
 
 			/* Set ceiling and floor limits in hardware */
 			rc = regulator_set_voltage(ctrl->vdd_limit_regulator,
-				aggr_corner.floor_volt,
-				aggr_corner.ceiling_volt);
+				aggr_corner.floor_volt * 19 / 20,
+				aggr_corner.ceiling_volt * 19 / 20);
 			if (rc) {
 				cpr3_err(ctrl, "could not configure HW closed-loop voltage limits, rc=%d\n",
 					rc);
@@ -3224,8 +3224,8 @@ static int _cpr3_regulator_update_ctrl_state(struct cpr3_controller *ctrl)
 		   && ctrl->vdd_limit_regulator) {
 		/* Set ceiling and floor limits in hardware */
 		rc = regulator_set_voltage(ctrl->vdd_limit_regulator,
-			aggr_corner.floor_volt,
-			aggr_corner.ceiling_volt);
+			aggr_corner.floor_volt * 19 / 20,
+			aggr_corner.ceiling_volt * 19 / 20);
 		if (rc) {
 			cpr3_err(ctrl, "could not configure HW closed-loop voltage limits, rc=%d\n",
 				rc);

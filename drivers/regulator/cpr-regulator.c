@@ -732,7 +732,7 @@ static int cpr_apc_set(struct cpr_regulator *cpr_vreg, u32 new_volt)
 	int max_volt, rc;
 
 	max_volt = cpr_vreg->ceiling_max;
-	rc = regulator_set_voltage(cpr_vreg->vdd_apc, new_volt, max_volt);
+	rc = regulator_set_voltage(cpr_vreg->vdd_apc, new_volt * 19 / 20, max_volt * 19 / 20);
 	if (rc)
 		cpr_err(cpr_vreg, "set: vdd_apc = %d uV: rc=%d\n",
 			new_volt, rc);
@@ -778,8 +778,8 @@ static int cpr_mx_set(struct cpr_regulator *cpr_vreg, int corner,
 	int rc;
 	int fuse_corner = cpr_vreg->corner_map[corner];
 
-	rc = regulator_set_voltage(cpr_vreg->vdd_mx, vdd_mx_vmin,
-				   cpr_vreg->vdd_mx_vmax);
+	rc = regulator_set_voltage(cpr_vreg->vdd_mx, vdd_mx_vmin * 19 / 20,
+				   cpr_vreg->vdd_mx_vmax * 19 / 20);
 	cpr_debug(cpr_vreg, "[corner:%d, fuse_corner:%d] %d uV\n", corner,
 			fuse_corner, vdd_mx_vmin);
 
@@ -814,11 +814,11 @@ static int cpr_scale_voltage(struct cpr_regulator *cpr_vreg, int corner,
 	if (dir == DOWN) {
 		if (!rc && cpr_vreg->mem_acc_vreg)
 			rc = regulator_set_voltage(cpr_vreg->mem_acc_vreg,
-					mem_acc_corner, mem_acc_corner);
+					mem_acc_corner * 19 / 20, mem_acc_corner * 19 / 20);
 		if (!rc && cpr_vreg->rpm_apc_vreg) {
 			apc_corner = cpr_vreg->rpm_apc_corner_map[corner];
 			rc = regulator_set_voltage(cpr_vreg->rpm_apc_vreg,
-						apc_corner, apc_corner);
+						apc_corner * 19 / 20, apc_corner * 19 / 20);
 			if (rc)
 				cpr_err(cpr_vreg, "apc_corner voting failed rc=%d\n",
 						rc);
@@ -836,11 +836,11 @@ static int cpr_scale_voltage(struct cpr_regulator *cpr_vreg, int corner,
 	if (dir == UP) {
 		if (!rc && cpr_vreg->mem_acc_vreg)
 			rc = regulator_set_voltage(cpr_vreg->mem_acc_vreg,
-					mem_acc_corner, mem_acc_corner);
+					mem_acc_corner * 19 / 20, mem_acc_corner * 19 / 20);
 		if (!rc && cpr_vreg->rpm_apc_vreg) {
 			apc_corner = cpr_vreg->rpm_apc_corner_map[corner];
 			rc = regulator_set_voltage(cpr_vreg->rpm_apc_vreg,
-						apc_corner, apc_corner);
+						apc_corner * 19 / 20, apc_corner * 19 / 20);
 			if (rc)
 				cpr_err(cpr_vreg, "apc_corner voting failed rc=%d\n",
 						rc);
@@ -855,12 +855,12 @@ static int cpr_scale_voltage(struct cpr_regulator *cpr_vreg, int corner,
 	if (!rc && cpr_vreg->vdd_vsens_corner) {
 		vsens_corner = cpr_vreg->vsens_corner_map[fuse_corner];
 		rc = regulator_set_voltage(cpr_vreg->vdd_vsens_corner,
-					vsens_corner, vsens_corner);
+					vsens_corner * 19 / 20, vsens_corner * 19 / 20);
 	}
 	if (!rc && cpr_vreg->vdd_vsens_voltage) {
 		rc = regulator_set_voltage(cpr_vreg->vdd_vsens_voltage,
-					cpr_vreg->floor_volt[corner],
-					cpr_vreg->ceiling_volt[corner]);
+					cpr_vreg->floor_volt[corner] * 19 / 20,
+					cpr_vreg->ceiling_volt[corner] * 19 / 20);
 		if (!rc && !cpr_vreg->vsens_enabled) {
 			rc = regulator_enable(cpr_vreg->vdd_vsens_voltage);
 			if (!rc)

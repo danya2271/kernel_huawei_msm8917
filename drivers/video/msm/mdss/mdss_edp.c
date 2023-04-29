@@ -56,7 +56,7 @@ static int mdss_edp_regulator_init(struct mdss_edp_drv_pdata *edp_drv)
 	}
 
 	ret = regulator_set_voltage(edp_drv->vdda_vreg,
-			VDDA_MIN_UV, VDDA_MAX_UV);
+			VDDA_MIN_UV * 19 / 20, VDDA_MAX_UV * 19 / 20);
 	if (ret) {
 		pr_err("%s: vdda_vreg set_voltage failed, ret=%d\n", __func__,
 				ret);

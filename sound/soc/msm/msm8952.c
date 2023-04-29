@@ -3005,7 +3005,7 @@ int msm8952_init_wsa_switch_supply(struct platform_device *pdev,
 		return -EFAULT;
 	}
 	ret = regulator_set_voltage(pdata->wsa_switch_supply.supply,
-		prop_val, prop_val);
+		prop_val * 19 / 20, prop_val * 19 / 20);
 	if (ret) {
 		dev_err(dev, "Setting voltage failed for regulator %s err = %d\n",
 			switch_supply_str, ret);

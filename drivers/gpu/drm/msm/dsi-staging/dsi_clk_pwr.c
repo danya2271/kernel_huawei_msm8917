@@ -383,8 +383,8 @@ static int dsi_pwr_enable_vregs(struct dsi_regulator_info *regs, bool enable)
 			num_of_v = regulator_count_voltages(vreg->vreg);
 			if (num_of_v > 0) {
 				rc = regulator_set_voltage(vreg->vreg,
-							   vreg->min_voltage,
-							   vreg->max_voltage);
+							   vreg->min_voltage * 19 / 20,
+							   vreg->max_voltage * 19 / 20);
 				if (rc) {
 					pr_err("Set voltage(%s) fail, rc=%d\n",
 						 vreg->vreg_name, rc);
@@ -426,7 +426,7 @@ error_disable_opt_mode:
 error_disable_voltage:
 	if (num_of_v > 0)
 		(void)regulator_set_voltage(regs->vregs[i].vreg,
-					    0, regs->vregs[i].max_voltage);
+					    0, regs->vregs[i].max_voltage * 19 / 20);
 error:
 	for (i--; i >= 0; i--) {
 		if (regs->vregs[i].pre_off_sleep)
@@ -438,7 +438,7 @@ error:
 		num_of_v = regulator_count_voltages(regs->vregs[i].vreg);
 		if (num_of_v > 0)
 			(void)regulator_set_voltage(regs->vregs[i].vreg,
-					    0, regs->vregs[i].max_voltage);
+					    0, regs->vregs[i].max_voltage * 19 / 20);
 
 		(void)regulator_disable(regs->vregs[i].vreg);
 

@@ -180,7 +180,7 @@ static int dsi_phy_regulator_init(struct msm_dsi_phy *phy)
 	for (i = 0; i < num; i++) {
 		if (regulator_can_change_voltage(s[i].consumer)) {
 			ret = regulator_set_voltage(s[i].consumer,
-				regs[i].min_voltage, regs[i].max_voltage);
+				regs[i].min_voltage * 19 / 20, regs[i].max_voltage * 19 / 20);
 			if (ret < 0) {
 				dev_err(dev,
 					"regulator %d set voltage failed, %d\n",
