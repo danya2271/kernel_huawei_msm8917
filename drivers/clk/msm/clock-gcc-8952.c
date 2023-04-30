@@ -831,7 +831,7 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk_8917_650MHz[] = {
 	F_SLEW( 523200000, 1046400000,	  gpll3,	1,	0,	0),
 	F_SLEW( 550000000, 1100000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 598000000, 1196000000,	  gpll3,	1,	0,	0),
-	F_SLEW( 650000000, 1300000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 850000000, 1300000000,	  gpll3,	1,	0,	0),
 	F_END
 };
 
@@ -846,7 +846,7 @@ static struct  rcg_clk gfx3d_clk_src = {
 		.ops = &clk_ops_rcg,
 		VDD_DIG_FMAX_MAP5(LOWER, 240000000, LOW, 400000000,
 				  NOMINAL, 465000000, NOM_PLUS, 500000000,
-				  HIGH, 550000000),
+				  HIGH, 850000000),
 		CLK_INIT(gfx3d_clk_src.c),
 	},
 };
@@ -4175,7 +4175,7 @@ static void override_for_8917(int speed_bin)
 	if (speed_bin) {
 		OVERRIDE_FMAX5(gfx3d,
 			LOWER, 270000000, LOW, 400000000, NOMINAL, 484800000,
-			NOM_PLUS, 523200000, HIGH, 650000000);
+			NOM_PLUS, 523200000, HIGH, 850000000);
 		OVERRIDE_FTABLE(gfx3d, ftbl_gcc_oxili_gfx3d_clk, 8917_650MHz);
 	} else {
 		OVERRIDE_FMAX5(gfx3d,
