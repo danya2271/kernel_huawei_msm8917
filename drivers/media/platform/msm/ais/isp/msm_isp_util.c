@@ -1906,7 +1906,7 @@ void msm_isp_process_overflow_irq(
 		ISP_DBG("%s: VFE%d Bus overflow detected: start recovery!\n",
 			__func__, vfe_dev->pdev->id);
 
-		trace_msm_cam_isp_overflow(vfe_dev, *irq_status0, *irq_status1);
+//		trace_msm_cam_isp_overflow(vfe_dev, *irq_status0, *irq_status1);
 
 		/* maks off irq for current vfe */
 		atomic_cmpxchg(&vfe_dev->error_info.overflow_state,
@@ -2420,7 +2420,7 @@ void msm_isp_dump_irq_debug(void)
 		count = dump_data.first;
 	}
 	for (i = 0; i < count; i++) {
-		trace_msm_cam_ping_pong_debug_dump(dump_data.arr[index]);
+//		trace_msm_cam_ping_pong_debug_dump(dump_data.arr[index]);
 		index = (index + 1) % MAX_ISP_PING_PONG_DUMP_SIZE;
 	}
 }
@@ -2437,7 +2437,7 @@ void msm_isp_dump_taskelet_debug(void)
 		count = tasklet_data.first;
 	}
 	for (i = 0; i < count; i++) {
-		trace_msm_cam_tasklet_debug_dump(tasklet_data.arr[index]);
+//		trace_msm_cam_tasklet_debug_dump(tasklet_data.arr[index]);
 		index = (index + 1) % MAX_ISP_PING_PONG_DUMP_SIZE;
 	}
 }
@@ -2455,9 +2455,9 @@ void msm_isp_dump_ping_pong_mismatch(void)
 		(uint32_t)dump_data.vfe_dev->common_data->dual_vfe_res->vfe_dev[
 			i]->vfe_irq->start);
 	}
-	trace_msm_cam_string(" ***** msm_isp_dump_irq_debug ****");
-	msm_isp_dump_irq_debug();
-	trace_msm_cam_string(" ***** msm_isp_dump_taskelet_debug ****");
-	msm_isp_dump_taskelet_debug();
+//	trace_msm_cam_string(" ***** msm_isp_dump_irq_debug ****");
+//	msm_isp_dump_irq_debug();
+//	trace_msm_cam_string(" ***** msm_isp_dump_taskelet_debug ****");
+//	msm_isp_dump_taskelet_debug();
 	spin_unlock(&dump_tasklet_lock);
 }

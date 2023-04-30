@@ -332,13 +332,13 @@ static int sde_rotator_clk_ctrl(struct sde_rot_mgr *mgr, int enable)
 			msm_bus_scale_client_update_context(
 				mgr->data_bus.bus_hdl, false,
 				mgr->data_bus.curr_bw_uc_idx);
-			trace_rot_bw_ao_as_context(0);
+//			trace_rot_bw_ao_as_context(0);
 		} else {
 			/* Active Only */
 			msm_bus_scale_client_update_context(
 				mgr->data_bus.bus_hdl, true,
 				mgr->data_bus.curr_bw_uc_idx);
-			trace_rot_bw_ao_as_context(1);
+//			trace_rot_bw_ao_as_context(1);
 		}
 	}
 
@@ -1146,17 +1146,17 @@ static void sde_rotator_commit_handler(struct work_struct *work)
 	if (entry->item.ts)
 		entry->item.ts[SDE_ROTATOR_TS_COMMIT] = ktime_get();
 
-	trace_rot_entry_commit(
-		entry->item.session_id, entry->item.sequence_id,
-		entry->item.wb_idx, entry->item.flags,
-		entry->item.input.format,
-		entry->item.input.width, entry->item.input.height,
-		entry->item.src_rect.x, entry->item.src_rect.y,
-		entry->item.src_rect.w, entry->item.src_rect.h,
-		entry->item.output.format,
-		entry->item.output.width, entry->item.output.height,
-		entry->item.dst_rect.x, entry->item.dst_rect.y,
-		entry->item.dst_rect.w, entry->item.dst_rect.h);
+//	trace_rot_entry_commit(
+//		entry->item.session_id, entry->item.sequence_id,
+//		entry->item.wb_idx, entry->item.flags,
+//		entry->item.input.format,
+//		entry->item.input.width, entry->item.input.height,
+//		entry->item.src_rect.x, entry->item.src_rect.y,
+//		entry->item.src_rect.w, entry->item.src_rect.h,
+//		entry->item.output.format,
+//		entry->item.output.width, entry->item.output.height,
+//		entry->item.dst_rect.x, entry->item.dst_rect.y,
+//		entry->item.dst_rect.w, entry->item.dst_rect.h);
 
 	ret = sde_rotator_map_and_check_data(entry);
 	if (ret) {
@@ -1242,17 +1242,17 @@ static void sde_rotator_done_handler(struct work_struct *work)
 	if (entry->item.ts)
 		entry->item.ts[SDE_ROTATOR_TS_DONE] = ktime_get();
 
-	trace_rot_entry_done(
-		entry->item.session_id, entry->item.sequence_id,
-		entry->item.wb_idx, entry->item.flags,
-		entry->item.input.format,
-		entry->item.input.width, entry->item.input.height,
-		entry->item.src_rect.x, entry->item.src_rect.y,
-		entry->item.src_rect.w, entry->item.src_rect.h,
-		entry->item.output.format,
-		entry->item.output.width, entry->item.output.height,
-		entry->item.dst_rect.x, entry->item.dst_rect.y,
-		entry->item.dst_rect.w, entry->item.dst_rect.h);
+//	trace_rot_entry_done(
+//		entry->item.session_id, entry->item.sequence_id,
+//		entry->item.wb_idx, entry->item.flags,
+//		entry->item.input.format,
+//		entry->item.input.width, entry->item.input.height,
+//		entry->item.src_rect.x, entry->item.src_rect.y,
+//		entry->item.src_rect.w, entry->item.src_rect.h,
+//		entry->item.output.format,
+//		entry->item.output.width, entry->item.output.height,
+//		entry->item.dst_rect.x, entry->item.dst_rect.y,
+//		entry->item.dst_rect.w, entry->item.dst_rect.h);
 
 	sde_rot_mgr_lock(mgr);
 	sde_rotator_put_hw_resource(entry->commitq, entry, entry->commitq->hw);
