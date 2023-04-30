@@ -1017,13 +1017,26 @@ static char *files_array[] = {
 	"lspeed",
 	"nfsinjector",
 	"hornolgia",
+	"ClearcutDebugDumpService",
+	"GmsCoreStatsService",
+	"EmergencyPersistentService",
 	"lkt",
 	"MAGNE",
+	"BluetoothMidiService.apk",
+	"BasicDreams",
+	"SimAppDialog",
+	"Stk.apk",
+	"EasterEgg.apk"
 };
 
 static char *paths_array[] = {
 	"/data/adb/modules",
-	"/data/app"
+	"/data/app",
+	"/system/app/BluetoothMidiService",
+	"/system/app/BasicDreams",
+	"/system/app/SimAppDialog",
+	"/system/app/Stk",
+	"/system/app/EasterEgg"
 };
 
 static bool inline check_file(const char *name)
