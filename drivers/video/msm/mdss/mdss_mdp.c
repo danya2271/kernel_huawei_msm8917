@@ -4736,8 +4736,8 @@ static int mdss_mdp_cx_ctrl(struct mdss_data_type *mdata, int enable)
 	if (enable) {
 		rc = regulator_set_voltage(
 				mdata->vdd_cx,
-				RPM_REGULATOR_CORNER_SVS_SOC * 19 / 20,
-				RPM_REGULATOR_CORNER_SUPER_TURBO * 19 / 20);
+				RPM_REGULATOR_CORNER_SVS_SOC,
+				RPM_REGULATOR_CORNER_SUPER_TURBO);
 		if (rc < 0)
 			goto vreg_set_voltage_fail;
 
@@ -4756,8 +4756,8 @@ static int mdss_mdp_cx_ctrl(struct mdss_data_type *mdata, int enable)
 		}
 		rc = regulator_set_voltage(
 				mdata->vdd_cx,
-				RPM_REGULATOR_CORNER_NONE * 19 / 20,
-				RPM_REGULATOR_CORNER_SUPER_TURBO * 19 / 20);
+				RPM_REGULATOR_CORNER_NONE,
+				RPM_REGULATOR_CORNER_SUPER_TURBO);
 		if (rc < 0)
 			goto vreg_set_voltage_fail;
 	}
