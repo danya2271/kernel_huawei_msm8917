@@ -171,7 +171,7 @@
 			regulator-name = "pm8917_l8";
 			regulator-min-microvolt = <2700000>;
 			regulator-max-microvolt = <2900000>;
-			qcom,init-voltage = <2950000>;
+			qcom,init-voltage = <2700000>;
 			status = "okay";
 		};
 	};
