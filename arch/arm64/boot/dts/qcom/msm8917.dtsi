@@ -1728,7 +1728,7 @@
 			<0x7884000 0x1f000>;
 		interrupt-names = "spi_irq", "spi_bam_irq";
 		interrupts = <0 97 0>, <0 238 0>;
-		spi-max-frequency = <26200000>;
+		spi-max-frequency = <19200000>;
 		pinctrl-names = "spi_default", "spi_sleep";
 		pinctrl-0 = <&spi3_default &spi3_cs0_active>;
 		pinctrl-1 = <&spi3_sleep &spi3_cs0_sleep>;
@@ -1754,7 +1754,7 @@
 			<0x7AC4000 0x1F000>;
 		interrupt-names = "spi_irq", "spi_bam_irq";
 		interrupts = <0 301 0>, <0 239 0>;
-		spi-max-frequency = <26200000>;
+		spi-max-frequency = <19200000>;
 		clocks = <&clock_gcc clk_gcc_blsp2_ahb_clk>,
 			<&clock_gcc clk_gcc_blsp2_qup3_spi_apps_clk>;
 		clock-names = "iface_clk", "core_clk";
